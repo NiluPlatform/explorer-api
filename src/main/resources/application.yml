@@ -1,0 +1,12 @@
+server:
+ port: 8089
+web3:
+  serverAddress: http://walletapi.nilu.tech
+logging:
+  level:
+    tech.nilu.platform.explorer.config.auto: INFO
+    tech.nilu: INFO
+    org.springframework.data.mongodb: INFO
+  file: /var/logs/exlorer.log
+spring.data.mongodb:
+  database: nileplorer

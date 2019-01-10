@@ -1,0 +1,15 @@
+version: "2.1"
+services:
+  mongo:
+    image: mongo:3.2.4
+    ports:
+    - 27017:27017
+    command: --smallfiles
+# APP  ***************************************************************************************
+  explorer:
+    image: nilu/explorer
+    ports:
+    - 8089:8089
+    links:
+    - mongo
+    entrypoint: "java  -Dspring.data.mongodb.uri=mongodb://mongo/nileplorer -Djava.security.egd=file:/dev/./urandom -jar /app.jar"
