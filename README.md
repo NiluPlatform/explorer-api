@@ -31,12 +31,21 @@ You can run the Explorer-api with "docker run" or Docker Compose.
 After you cloned the source go to explorer-api directory:
 ````
 mvn clean package
-docker build --build-arg JAR_FILE=target/explorer-0.0.1-SNAPSHOT.jar -f Dockerfile -t nilu-api .
+docker build --build-arg JAR_FILE=target/explorer-0.0.1-SNAPSHOT.jar -f Dockerfile -t nilu/explorer .
     
 ````
 Then you can use docker images to run the Explorer.
 If you run in docker, you should first run mongodb image
 ````
 docker run -p 27017:27017 -v $PWD/db:/mongo/db -d mongo
-docker run --name nilu-api --link you_mongodb_image_name:mongo -p 8089:8089 -t nilu-api
+docker run --name nilu-api --link you_mongodb_image_name:mongo -p 8089:8089 -t nilu/explorer
 ````
+### Docker-Compose
+After you run the docker build command above, there is an image named nilu/explorer in the docker container.
+
+
+In explorer-api directory, you can run this command:
+````bash
+docker-compose up -d
+````
+You started all the services
